@@ -390,3 +390,29 @@ button { font-family: inherit; }
   line-height: 1.55;
   max-width: 26ch;
 }
+
+
+/* ===== Pricing icon tooltips ===== */
+.sme-icon-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 4px);
+  margin-bottom: 6px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: hsl(230, 20%, 6%);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 20;
+}
+.sme-icon-hotspot:hover .sme-icon-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

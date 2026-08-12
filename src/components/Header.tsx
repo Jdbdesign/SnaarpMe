@@ -211,7 +211,7 @@ export default function Header() {
           gap: 20,
         }}
       >
-        <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#17131F', flexShrink: 0 }}>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#17131F', flexShrink: 0 }}>
           <img src="/assets/snaarpme-logo.svg" alt="" style={{ width: 32, height: 32 }} />
           <span style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: '20.5px', fontWeight: 600, letterSpacing: '-.015em' }}>
             Snaarp<span style={{ color: '#111111' }}>Me</span>
@@ -308,7 +308,7 @@ export default function Header() {
           {/* Solution dropdown */}
           <SolutionDropdown />
 
-          <a href="#pricing" style={{ padding: '9px 14px', borderRadius: 9, color: '#4A4459', fontSize: '15.5px' }}>Pricing</a>
+          <a href="/pricing" style={{ padding: '9px 14px', borderRadius: 9, color: '#4A4459', fontSize: '15.5px' }}>Pricing</a>
         </div>
         <div style={{ flex: 1 }} />
         <div style={{ width: 1, height: 24, background: '#EFEBF7' }} />

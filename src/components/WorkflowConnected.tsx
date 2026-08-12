@@ -23,7 +23,7 @@ interface WorkflowStep {
 
 const STEPS: WorkflowStep[] = [
   { label: 'Find', caption: 'Zeus finds new prospects', Icon: Search, accent: 'brand' },
-  { label: 'Verify', caption: 'Zeus finds new prospects', Icon: ShieldCheck, accent: 'mint' },
+  { label: 'Verify', caption: 'VerifyRit checks every lead', Icon: ShieldCheck, accent: 'mint' },
   { label: 'Engage', caption: 'Sendrit sends personalized emails', Icon: Send, accent: 'amber' },
   { label: 'Convert', caption: 'CRM tracks conversations', Icon: MessageSquare, accent: 'brand' },
   { label: 'Close', caption: 'DocSign closes the deals', Icon: FileSignature, accent: 'mint' },
