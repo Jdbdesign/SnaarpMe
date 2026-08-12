@@ -2,7 +2,7 @@ export default function HowItWorks() {
   return (
     <section id="how" style={{ padding: '80px 26px 80px', background: '#FBFAFE', borderTop: '1px solid #F2EFF9', borderBottom: '1px solid #F2EFF9' }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-        <div data-reveal="" style={{ maxWidth: 640 }}>
+        <div data-reveal="" style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
           <span style={{ fontSize: '12.5px', letterSpacing: '.14em', fontWeight: 700, color: '#7C3AED' }}>HOW SNAARPME WORKS</span>
           <h2 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(30px,3.4vw,42px)', lineHeight: 1.16, letterSpacing: '-.024em', fontWeight: 600, color: '#17131F', margin: '14px 0 0' }}>Three steps. Then it runs itself.</h2>
         </div>

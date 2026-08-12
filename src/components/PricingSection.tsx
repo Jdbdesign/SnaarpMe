@@ -3,34 +3,34 @@ export default function PricingSection() {
     <section id="pricing" style={{ padding: '80px 26px', background: '#fff' }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
         <div data-reveal="" style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto' }}>
-          <h2 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(30px,3.4vw,42px)', lineHeight: 1.16, letterSpacing: '-.024em', fontWeight: 600, color: '#17131F', margin: 0 }}>Free forever. Upgrade when you&apos;re ready.</h2>
-          <p style={{ fontSize: 17, color: '#5A5468', margin: '14px 0 0' }}>Start on Free and stay there as long as it works. No card, no countdown.</p>
+          <h2 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(30px,3.4vw,42px)', lineHeight: 1.16, letterSpacing: '-.024em', fontWeight: 600, color: '#17131F', margin: 0 }}>Simple pricing. No surprises.</h2>
+          <p style={{ fontSize: 17, color: '#5A5468', margin: '14px 0 0' }}>Pick the plan that fits your team. Try any plan free for 14 days.</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 18, marginTop: 38, alignItems: 'stretch' }}>
           <PricingCard
-            name="Free"
-            price="&pound;0"
-            priceSub="forever"
+            name="Basic"
+            price="&pound;2"
+            priceSub="per user / month"
             features={['One booking link', 'One calendar connection', 'Email reminders']}
-            cta="Get started"
+            cta="Start 14-day free trial"
             delay={50}
           />
           <PricingCard
             name="Pro"
-            price="&pound;10"
+            price="&pound;8"
             priceSub="per user / month"
             features={['Unlimited booking links', 'Workflows and SMS reminders', 'Custom branding and buffers']}
-            cta="Start Pro free"
+            cta="Start 14-day free trial"
             popular
             delay={120}
           />
           <PricingCard
             name="Team"
-            price="&pound;16"
+            price="&pound;18"
             priceSub="per user / month"
             features={['Round-robin and collective links', 'Shared availability and analytics', 'Admin controls and SSO']}
-            cta="Start Team trial"
+            cta="Start 14-day free trial"
             delay={190}
           />
         </div>

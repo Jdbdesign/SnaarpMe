@@ -2,7 +2,6 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import TrustBar from '@/components/TrustBar';
 import HowItWorks from '@/components/HowItWorks';
-import { ExploreByCategory } from '@/components/ExploreByCategory';
 import PricingBanner from '@/components/PricingBanner';
 import WorkflowConnected from '@/components/WorkflowConnected';
 import FeatureDeepDive from '@/components/FeatureDeepDive';
@@ -22,7 +21,6 @@ export default function Home() {
       <HeroSection />
       <TrustBar />
       <HowItWorks />
-      <ExploreByCategory />
       <PricingBanner />
       <WorkflowConnected />
       <FeatureDeepDive />
