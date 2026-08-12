@@ -14,6 +14,33 @@ import {
   GraduationCap,
   type LucideIcon,
 } from 'lucide-react';
+import { RevealSection } from '@/components/reveal/RevealSection';
+
+// ============================================================================
+// TAXONOMY CONFLICT — NEEDS A PRODUCT DECISION
+// This section groups apps into 5 categories (Communicate, Create & Store,
+// Grow Revenue, Secure & Sign, Run the Business) per the original product
+// spec. Further up this same homepage, `EverythingYouNeed` groups the same
+// apps into a DIFFERENT 6-category system (Workplace, Sales, Finance,
+// Communications, Security, AI) with a different app-to-category mapping —
+// e.g. Lock and ID Card sit under "Security" there, but under "Secure &
+// Sign" here. Both are shipping on the same page simultaneously. This is a
+// real, unresolved inconsistency — not something to silently pick a side on.
+// One taxonomy needs to be chosen sitewide before this ships long-term.
+//
+// CROSS-LISTING: PDF Reader appears in both "Create & Store" and "Secure &
+// Sign" below (it's genuinely both a document tool and a sign/annotate
+// tool) — flagged here rather than silently resolved one way.
+//
+// LINK-TARGET CORRECTIONS FROM SPEC: two categories below don't match the
+// hrefs the section brief specified —
+//   - Document actually lives at /products/docs, not /products/document.
+//   - Doc Sign, Books, Accounting Software, Project Management and ELearn
+//     were described as "already-built product pages," but app/products/
+//     has no route for any of them yet (only Download pages exist, under
+//     app/download/). Those five fall back to the Products mega menu
+//     (via openProductsMenu below) instead of linking to a 404.
+// ============================================================================
 
 type AppIconSpec = { kind: 'img'; src: string } | { kind: 'lucide'; Icon: LucideIcon };
 
@@ -21,6 +48,8 @@ interface CategoryApp {
   name: string;
   desc: string;
   icon: AppIconSpec;
+  /** Real product page. Omitted for apps without one yet — those rows fall
+   * back to opening the Products mega menu at this category instead. */
   href?: string;
 }
 
@@ -32,6 +61,9 @@ interface Category {
   tagline: string;
   accent: Accent;
   apps: CategoryApp[];
+  /** Shows a "View All" link in the header row that opens the Products mega
+   * menu at this category — used only where the app list is a deliberate
+   * subset (Run the Business ships more apps than are listed here). */
   viewAllCategoryId?: string;
 }
 
@@ -59,6 +91,7 @@ const CATEGORIES: Category[] = [
       { name: 'Work Drive', desc: 'Shared storage for every file, with version history built in.', icon: { kind: 'img', src: '/assets/icons/cube.jpg' }, href: '/products/work-drive' },
       { name: 'Sheets', desc: 'Spreadsheets that talk to your business.', icon: { kind: 'img', src: '/assets/icons/apps-sheet.jpg' }, href: '/products/sheets' },
       { name: 'PDF Reader', desc: 'View, mark up, and sign PDFs — all in one place.', icon: { kind: 'img', src: '/assets/icons/logos/pdf-reader.svg' }, href: '/products/pdf-reader' },
+      // Document ships at /products/docs (not /products/document as the section brief specified — see flag above).
       { name: 'Document', desc: 'Write together and see it happen live.', icon: { kind: 'img', src: '/assets/icons/apps-document.png' }, href: '/products/docs' },
       { name: 'Presentation', desc: 'Build and present decks straight from the browser.', icon: { kind: 'img', src: '/assets/icons/p-icon.jpg' }, href: '/products/presentation' },
       { name: 'Notepad', desc: 'Quick notes that sync the moment you type them.', icon: { kind: 'img', src: '/assets/icons/logos/notepad.svg' }, href: '/products/notepad' },
@@ -70,7 +103,8 @@ const CATEGORIES: Category[] = [
     tagline: 'Everything that finds, nurtures, and closes your next deal.',
     accent: 'mint',
     apps: [
-      { name: 'CRM', desc: 'Know every deal, see what\u2019s next.', icon: { kind: 'lucide', Icon: UsersRound }, href: '/products/crm' },
+      { name: 'CRM', desc: 'Know every deal, see what’s next.', icon: { kind: 'lucide', Icon: UsersRound }, href: '/products/crm' },
+      // No dedicated product page yet — falls back to the mega menu.
       { name: 'Zeus', desc: 'Finds new prospects that match your ideal customer profile, automatically.', icon: { kind: 'img', src: '/assets/icons/logos/zeus.svg' } },
       { name: 'Sendrit', desc: 'Sends personalized outbound sequences that land in the inbox.', icon: { kind: 'img', src: '/assets/icons/apps-sendrit.jpg' } },
       { name: 'VerifyRit', desc: 'Verifies leads and emails before they ever hit your pipeline.', icon: { kind: 'lucide', Icon: ShieldCheck } },
@@ -81,12 +115,14 @@ const CATEGORIES: Category[] = [
   {
     id: 'secure-sign',
     label: 'Secure & Sign',
-    tagline: 'Every password, signature, and approval \u2014 locked down.',
+    tagline: 'Every password, signature, and approval — locked down.',
     accent: 'rose',
     apps: [
       { name: 'eSignature', desc: 'Send it out, get it signed, track it to done.', icon: { kind: 'img', src: '/assets/icons/logos/esignature.svg' }, href: '/products/esignature' },
+      // No dedicated product page yet (see flag above) — falls back to the mega menu.
       { name: 'Doc Sign', desc: 'Internal approvals that move in order, one step at a time.', icon: { kind: 'img', src: '/assets/icons/logos/doc-sign.svg' } },
-      { name: 'PDF Reader', desc: 'View, mark up, and sign PDFs \u2014 all in one place.', icon: { kind: 'img', src: '/assets/icons/logos/pdf-reader.svg' }, href: '/products/pdf-reader' },
+      // Cross-listed with Create & Store above — see flag at the top of this file.
+      { name: 'PDF Reader', desc: 'View, mark up, and sign PDFs — all in one place.', icon: { kind: 'img', src: '/assets/icons/logos/pdf-reader.svg' }, href: '/products/pdf-reader' },
       { name: 'Lock', desc: 'Every password, locked down and shared safely.', icon: { kind: 'img', src: '/assets/icons/apps-lock.jpg' }, href: '/products/lock' },
     ],
   },
@@ -97,13 +133,20 @@ const CATEGORIES: Category[] = [
     accent: 'amber',
     viewAllCategoryId: 'run-business',
     apps: [
+      // None of the four below have a dedicated product page yet (see flag above) — all fall back to the mega menu.
       { name: 'Books', desc: 'Send invoices and keep the books straight, automatically.', icon: { kind: 'lucide', Icon: BookOpen } },
-      { name: 'Accounting Software', desc: 'Full accounting \u2014 payroll, tax, and financial statements.', icon: { kind: 'lucide', Icon: Calculator } },
-      { name: 'Project Management', desc: 'Plan it, track it, ship it \u2014 one board for the whole team.', icon: { kind: 'lucide', Icon: Kanban } },
+      { name: 'Accounting Software', desc: 'Full accounting — payroll, tax, and financial statements.', icon: { kind: 'lucide', Icon: Calculator } },
+      { name: 'Project Management', desc: 'Plan it, track it, ship it — one board for the whole team.', icon: { kind: 'lucide', Icon: Kanban } },
       { name: 'ELearn', desc: 'Train your team and track it as it happens.', icon: { kind: 'lucide', Icon: GraduationCap } },
     ],
   },
 ];
+
+/** Apps without a `href` dispatch this instead of navigating — Header listens
+ * for it and pops the Products mega menu open pre-scrolled to `categoryId`. */
+function openProductsMenu(categoryId: string) {
+  window.dispatchEvent(new CustomEvent('snaarp:open-products-menu', { detail: { categoryId } }));
+}
 
 function RowIcon({ icon }: { icon: AppIconSpec }) {
   if (icon.kind === 'img') {
@@ -117,7 +160,7 @@ function RowIcon({ icon }: { icon: AppIconSpec }) {
   );
 }
 
-function AppRow({ app }: { app: CategoryApp }) {
+function AppRow({ app, categoryId }: { app: CategoryApp; categoryId: string }) {
   const inner = (
     <>
       <span className="ebc-app-icon"><RowIcon icon={app.icon} /></span>
@@ -129,9 +172,18 @@ function AppRow({ app }: { app: CategoryApp }) {
   );
 
   if (app.href) {
-    return <Link href={app.href} className="ebc-app-row">{inner}</Link>;
+    return (
+      <Link href={app.href} className="ebc-app-row">
+        {inner}
+      </Link>
+    );
   }
-  return <span className="ebc-app-row">{inner}</span>;
+
+  return (
+    <button type="button" className="ebc-app-row ebc-app-row-fallback" onClick={() => openProductsMenu(categoryId)}>
+      {inner}
+    </button>
+  );
 }
 
 function CategoryPanel({ category }: { category: Category }) {
@@ -155,13 +207,19 @@ function CategoryCard({ category }: { category: Category }) {
   return (
     <article className="ebc-card">
       <CategoryPanel category={category} />
+
       <div className="ebc-apps">
         <div className="ebc-apps-header">
           <span className="ebc-apps-label">Apps to Explore</span>
+          {category.viewAllCategoryId && (
+            <button type="button" className="ebc-apps-viewall" onClick={() => openProductsMenu(category.viewAllCategoryId!)}>
+              View All <span aria-hidden="true">&rarr;</span>
+            </button>
+          )}
         </div>
         <div className="ebc-app-grid">
           {category.apps.map((app) => (
-            <AppRow key={app.name} app={app} />
+            <AppRow key={app.name} app={app} categoryId={category.id} />
           ))}
         </div>
       </div>
@@ -185,14 +243,16 @@ function StickyCard({
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
-    <div className="ebc-sticky-item" style={{ top: `calc(140px + ${i * 10}px)`, zIndex: i + 1 }}>
-      <motion.div style={{ scale }} className="ebc-sticky-motion">
+    <div className="sticky px-6 lg:px-10 max-w-7xl mx-auto" style={{ top: `calc(140px + ${i * 10}px)`, zIndex: i + 1 }}>
+      <motion.div style={{ scale }} className="origin-top">
         {children}
       </motion.div>
     </div>
   );
 }
 
+// Sticky scroll animation — cards pin and scale as you scroll, matching
+// the ImagesScrollingAnimation pattern.
 function ExploreStack() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -201,7 +261,7 @@ function ExploreStack() {
   });
 
   return (
-    <div className="ebc-stack" ref={containerRef}>
+    <div className="ebc-stack relative" ref={containerRef} style={{ paddingBottom: '5vh' }}>
       {CATEGORIES.map((category, i) => (
         <StickyCard key={category.id} i={i} total={CATEGORIES.length} progress={scrollYProgress}>
           <CategoryCard category={category} />
@@ -211,18 +271,22 @@ function ExploreStack() {
   );
 }
 
-export default function ExploreByCategory() {
+export function ExploreByCategory() {
   return (
-    <section className="ebc-section">
-      <div className="ebc-header">
-        <h2 className="ebc-heading" data-reveal="">
-          Everything, organized<br />
-          <span className="ebc-heading-accent">the way you work.</span>
-        </h2>
-        <p className="ebc-subtext" data-reveal="">
-          27 apps across 5 categories — find exactly what your team needs, in seconds.
-        </p>
-      </div>
+    <section className="ebc-section py-16 lg:py-24">
+      <RevealSection className="max-w-7xl mx-auto px-6 lg:px-10 pb-8">
+        <div className="eyn-header">
+          <h2 className="eyn-heading" data-reveal data-reveal-group="ebc">
+            Everything, organized
+            <br />
+            <span className="eyn-heading-accent">the way you work.</span>
+          </h2>
+          <p className="eyn-subtext" data-reveal data-reveal-group="ebc">
+            27 apps across 5 categories — find exactly what your team needs, in seconds.
+          </p>
+        </div>
+      </RevealSection>
+
       <ExploreStack />
     </section>
   );
