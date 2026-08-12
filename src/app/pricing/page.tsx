@@ -200,7 +200,7 @@ export default function PricingPage() {
                 </ul>
 
                 {/* CTA */}
-                <a href="#signup" style={{ marginTop: 24, textAlign: 'center', padding: '14px 20px', borderRadius: 999, background: plan.popular ? '#7C3AED' : undefined, border: plan.popular ? undefined : '1px solid #E4DDF3', color: plan.popular ? '#fff' : '#17131F', fontSize: 15, fontWeight: 700, display: 'block', textDecoration: 'none', minHeight: 44, lineHeight: '44px', padding: plan.popular ? undefined : '0 20px' }}>Start 14-day free trial</a>
+                <a href="#signup" style={{ marginTop: 24, textAlign: 'center', padding: plan.popular ? '14px 20px' : '0 20px', borderRadius: 999, background: plan.popular ? '#7C3AED' : undefined, border: plan.popular ? undefined : '1px solid #E4DDF3', color: plan.popular ? '#fff' : '#17131F', fontSize: 15, fontWeight: 700, display: 'block', textDecoration: 'none', minHeight: 44, lineHeight: '44px' }}>Start 14-day free trial</a>
               </div>
             );
           })}
