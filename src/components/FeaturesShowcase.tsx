@@ -230,7 +230,7 @@ export default function FeaturesShowcase() {
               { src: '/assets/favicons/Presentation-Fav.svg', alt: 'Presentation' },
               { src: '/assets/favicons/Sheet-Fav.svg', alt: 'Sheet' },
             ].map(icon => (
-              <img key={icon.alt} src={icon.src} alt={icon.alt} style={{ width: 48, height: 48, objectFit: 'contain' }} />
+              <img key={icon.alt} src={icon.src} alt={icon.alt} data-hover-icon="" style={{ width: 48, height: 48, objectFit: 'contain', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1)', cursor: 'pointer' }} />
             ))}
           </div>
         </div>

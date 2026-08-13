@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const FAQS = [
   { q: 'Is SnaarpMe really free?', a: 'Yes. The Free plan covers one booking link, one connected calendar and email reminders, with no time limit and no card required. You only pay when you want multiple links, workflows or team routing.' },
@@ -18,29 +18,49 @@ export default function FaqSection() {
       <div style={{ maxWidth: 860, margin: '0 auto' }}>
         <h2 data-reveal="" style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(28px,3.2vw,38px)', lineHeight: 1.18, letterSpacing: '-.022em', fontWeight: 600, color: '#17131F', margin: '0 0 30px', textAlign: 'center' }}>Questions, answered.</h2>
         <div data-reveal="" data-reveal-delay="70" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {FAQS.map((f, i) => {
-            const isOpen = i === open;
-            return (
-              <div key={f.q} style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 16, overflow: 'hidden' }}>
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? -1 : i)}
-                  style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '18px 20px', background: 'transparent', border: 0, textAlign: 'left', cursor: 'pointer', fontSize: '16.5px', fontWeight: 700, color: '#17131F' }}
-                >
-                  <span style={{ flex: 1 }}>{f.q}</span>
-                  <span style={{ width: 28, height: 28, flexShrink: 0, borderRadius: 9, background: '#F4F0FE', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 220ms cubic-bezier(.3,.9,.3,1)', transform: `rotate(${isOpen ? 135 : 0}deg)` }}>
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
-                  </span>
-                </button>
-                {isOpen && (
-                  <p style={{ margin: 0, padding: '0 20px 20px', fontSize: '15.5px', lineHeight: 1.65, color: '#5A5468' }}>{f.a}</p>
-                )}
-              </div>
-            );
-          })}
+          {FAQS.map((f, i) => (
+            <FaqItem key={f.q} question={f.q} answer={f.a} isOpen={i === open} onToggle={() => setOpen(i === open ? -1 : i)} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function FaqItem({ question, answer, isOpen, onToggle }: { question: string; answer: string; isOpen: boolean; onToggle: () => void }) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<number>(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
+    }
+  }, [answer]);
+
+  return (
+    <div style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 16, overflow: 'hidden', transition: 'box-shadow 200ms ease' }}>
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        onClick={onToggle}
+        style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 14, padding: '18px 20px', background: 'transparent', border: 0, textAlign: 'left', cursor: 'pointer', fontSize: '16.5px', fontWeight: 700, color: '#17131F', fontFamily: 'inherit' }}
+      >
+        <span style={{ flex: 1 }}>{question}</span>
+        <span style={{ width: 28, height: 28, flexShrink: 0, borderRadius: 9, background: '#F4F0FE', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 300ms cubic-bezier(.22,.8,.3,1)', transform: `rotate(${isOpen ? 135 : 0}deg)` }}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+        </span>
+      </button>
+      <div
+        ref={contentRef}
+        style={{
+          maxHeight: isOpen ? height : 0,
+          opacity: isOpen ? 1 : 0,
+          overflow: 'hidden',
+          transition: 'max-height 300ms cubic-bezier(.22,.8,.3,1), opacity 250ms ease',
+        }}
+      >
+        <p style={{ margin: 0, padding: '0 20px 20px', fontSize: '15.5px', lineHeight: 1.65, color: '#5A5468' }}>{answer}</p>
+      </div>
+    </div>
   );
 }
