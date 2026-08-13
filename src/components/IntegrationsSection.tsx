@@ -118,7 +118,7 @@ export default function IntegrationsSection() {
           <p data-reveal="" data-reveal-delay="120" style={{ fontSize: 17, lineHeight: 1.62, color: '#5A5468', margin: '16px 0 0', maxWidth: 480 }}>Two-way calendar sync, video links generated automatically, and payments where you need them.</p>
           <div data-reveal="" data-reveal-delay="180" style={{ marginTop: 30, display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center' }}>
             {integrations.map(item => (
-              <div key={item.name} style={{ border: '1px solid #ECE7F6', borderRadius: 14, padding: '14px 18px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px -18px rgba(35,20,70,.45)' }}>
+              <div key={item.name} data-hover-icon="" style={{ border: '1px solid #ECE7F6', borderRadius: 14, padding: '14px 18px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px -18px rgba(35,20,70,.45)' }}>
                 <img src={item.src} alt={item.name.replace('\n', ' ')} style={{ height: 60, width: 'auto', objectFit: 'contain', display: 'block' }} />
               </div>
             ))}

@@ -215,6 +215,26 @@ export default function FeaturesShowcase() {
           </div>
         </div>
 
+        {/* Product icons row */}
+        <div data-reveal="" data-reveal-delay="140" style={{ marginTop: 48, textAlign: 'center' }}>
+          <p style={{ fontSize: 15, color: T.ink, margin: '0 0 24px', fontWeight: 500 }}>
+            SnaarpMe works with any of <span style={{ fontWeight: 700 }}>Snaarp Products</span> and more...
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+            {[
+              { src: '/assets/favicons/SnaarpMe-Fav.svg', alt: 'SnaarpMe' },
+              { src: '/assets/favicons/SnaarpMeet-Fav.svg', alt: 'Snaarp Meet' },
+              { src: '/assets/favicons/SnaarpTeams-Fav.svg', alt: 'Snaarp Teams' },
+              { src: '/assets/favicons/Mail-Fav.svg', alt: 'Mail' },
+              { src: '/assets/favicons/Document-Fav.svg', alt: 'Document' },
+              { src: '/assets/favicons/Presentation-Fav.svg', alt: 'Presentation' },
+              { src: '/assets/favicons/Sheet-Fav.svg', alt: 'Sheet' },
+            ].map(icon => (
+              <img key={icon.alt} src={icon.src} alt={icon.alt} style={{ width: 48, height: 48, objectFit: 'contain' }} />
+            ))}
+          </div>
+        </div>
+
         {/* Mobile accordion */}
         <div className="fs-card-mobile" data-reveal="" data-reveal-delay="90">
           <MobileAccordion features={FEATURES} activeIdx={activeIdx} setActiveIdx={setActiveIdx} />

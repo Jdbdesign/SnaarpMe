@@ -71,7 +71,7 @@ export default function DashboardShowcase() {
               <svg viewBox="0 0 280 108" preserveAspectRatio="none" style={{ width: '100%', height: 108, display: 'block', marginTop: 8 }} aria-hidden="true">
                 <defs><linearGradient id="smBk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity=".26" /><stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" /></linearGradient></defs>
                 <path d="M6 86 C28 84 30 42 52 42 C74 42 74 74 96 74 C118 74 118 34 140 34 C162 34 160 66 182 70 C204 74 206 80 228 82 C250 84 252 78 274 78 L274 104 L6 104 Z" fill="url(#smBk)" />
-                <path d="M6 86 C28 84 30 42 52 42 C74 42 74 74 96 74 C118 74 118 34 140 34 C162 34 160 66 182 70 C204 74 206 80 228 82 C250 84 252 78 274 78" fill="none" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path data-draw-path="" d="M6 86 C28 84 30 42 52 42 C74 42 74 74 96 74 C118 74 118 34 140 34 C162 34 160 66 182 70 C204 74 206 80 228 82 C250 84 252 78 274 78" fill="none" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="52" cy="42" r="4" fill="#7C3AED" stroke="#fff" strokeWidth="2.4" />
                 <circle cx="96" cy="74" r="4" fill="#7C3AED" stroke="#fff" strokeWidth="2.4" />
                 <circle cx="140" cy="34" r="4.6" fill="#7C3AED" stroke="#fff" strokeWidth="2.8" />

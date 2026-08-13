@@ -24,13 +24,13 @@ export default function Testimonials() {
           <div style={{ position: 'relative', height: 1, background: 'rgba(255,255,255,.22)', margin: '26px 0' }} />
           <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4,minmax(0,1fr))', gap: 10 }}>
             {[
-              { val: '2M+', label: 'Meetings booked' },
-              { val: '500K+', label: 'Active users' },
-              { val: '99.9%', label: 'Uptime' },
-              { val: '150+', label: 'Countries' },
+              { val: '2', suffix: 'M+', label: 'Meetings booked', target: 2 },
+              { val: '500', suffix: 'K+', label: 'Active users', target: 500 },
+              { val: '99.9', suffix: '%', label: 'Uptime', target: 99 },
+              { val: '150', suffix: '+', label: 'Countries', target: 150 },
             ].map(s => (
-              <div key={s.val} style={{ padding: '0 2px', minWidth: 0 }}>
-                <span style={{ display: 'block', fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(23px,2.6vw,32px)', fontWeight: 700, color: '#fff', letterSpacing: '-.03em', lineHeight: 1 }}>{s.val}</span>
+              <div key={s.label} style={{ padding: '0 2px', minWidth: 0 }}>
+                <span data-count-up={s.target} data-count-suffix={s.suffix} style={{ display: 'block', fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(23px,2.6vw,32px)', fontWeight: 700, color: '#fff', letterSpacing: '-.03em', lineHeight: 1 }}>{s.val}{s.suffix}</span>
                 <span style={{ display: 'block', fontSize: 12, color: '#D6C9F5', marginTop: 7, lineHeight: 1.35 }}>{s.label}</span>
               </div>
             ))}

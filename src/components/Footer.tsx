@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer style={{ background: '#fff', borderTop: '1px solid #F1EDF9', padding: '56px 26px 40px' }}>
-      <div style={{ maxWidth: 1440, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(170px,1fr))', gap: 36 }}>
+      <div data-reveal="" style={{ maxWidth: 1440, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(170px,1fr))', gap: 36 }}>
         <div style={{ minWidth: 200 }}>
           <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#17131F' }}>
             <img src="/assets/snaarpme-logo.svg" alt="" style={{ width: 30, height: 30 }} />

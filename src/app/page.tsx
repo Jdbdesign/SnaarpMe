@@ -7,7 +7,6 @@ import FeaturesShowcase from '@/components/FeaturesShowcase';
 import DashboardShowcase from '@/components/DashboardShowcase';
 import IntegrationsSection from '@/components/IntegrationsSection';
 import Testimonials from '@/components/Testimonials';
-import PricingSection from '@/components/PricingSection';
 import FaqSection from '@/components/FaqSection';
 import FinalCta from '@/components/FinalCta';
 import Footer from '@/components/Footer';
@@ -25,7 +24,6 @@ export default function Home() {
       <DashboardShowcase />
       <IntegrationsSection />
       <Testimonials />
-      <PricingSection />
       <FaqSection />
       <FinalCta />
       <Footer />

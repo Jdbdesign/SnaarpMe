@@ -190,6 +190,7 @@ export default function Header() {
 
   return (
     <header
+      data-hero-load="nav"
       style={{
         position: 'sticky',
         top: 0,

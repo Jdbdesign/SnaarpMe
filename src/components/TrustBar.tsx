@@ -16,8 +16,8 @@ export default function TrustBar() {
       <div data-reveal="" style={{ maxWidth: 1440, margin: '0 auto', textAlign: 'center' }}>
         <p style={{ fontSize: 13, letterSpacing: '.14em', color: '#645E75', fontWeight: 700, margin: '0 0 32px' }}>TRUSTED BY AMBITIOUS TEAMS AROUND THE WORLD</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '24px 48px', alignItems: 'center' }}>
-          {logos.map(l => (
-            <span key={l.name} style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.7, transition: 'opacity .2s' }}>
+          {logos.map((l, i) => (
+            <span key={l.name} data-reveal="" data-reveal-delay={i * 40} data-hover-icon="" style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.7, transition: 'opacity .2s, transform 150ms cubic-bezier(.22,.8,.3,1)' }}>
               <Image
                 src={l.src}
                 alt={l.name}

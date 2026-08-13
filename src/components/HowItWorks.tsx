@@ -9,7 +9,7 @@ export default function HowItWorks() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 22, marginTop: 40 }}>
           {/* Step 1: Share your link */}
-          <article data-reveal="" data-reveal-delay={60} style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 20, padding: 24, boxShadow: '0 20px 44px -34px rgba(35,20,70,.35)' }}>
+          <article data-reveal="" data-reveal-delay={60} data-hover-lift="" style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 20, padding: 24, boxShadow: '0 20px 44px -34px rgba(35,20,70,.35)' }}>
             <div style={{ minHeight: 172, overflow: 'hidden', borderRadius: 14, background: '#FAF8FE', border: '1px solid #F0ECF9', padding: 14, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 10 }}>
               {/* Slack-style message card */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -38,7 +38,7 @@ export default function HowItWorks() {
           </article>
 
           {/* Step 2: They pick a time */}
-          <article data-reveal="" data-reveal-delay={130} style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 20, padding: 24, boxShadow: '0 20px 44px -34px rgba(35,20,70,.35)' }}>
+          <article data-reveal="" data-reveal-delay={130} data-hover-lift="" style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 20, padding: 24, boxShadow: '0 20px 44px -34px rgba(35,20,70,.35)' }}>
             <div style={{ minHeight: 172, overflow: 'hidden', borderRadius: 14, background: '#FAF8FE', border: '1px solid #F0ECF9', padding: 14, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.08em', color: '#8A8599' }}>SELECT A TIME</div>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#17131F' }}>Tuesday, 15 September</div>
@@ -58,7 +58,7 @@ export default function HowItWorks() {
           </article>
 
           {/* Step 3: It's on both calendars */}
-          <article data-reveal="" data-reveal-delay={200} style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 20, padding: 24, boxShadow: '0 20px 44px -34px rgba(35,20,70,.35)' }}>
+          <article data-reveal="" data-reveal-delay={200} data-hover-lift="" style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 20, padding: 24, boxShadow: '0 20px 44px -34px rgba(35,20,70,.35)' }}>
             <div style={{ minHeight: 172, overflow: 'hidden', borderRadius: 14, background: '#FAF8FE', border: '1px solid #F0ECF9', padding: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
               {/* Calendar card */}
               <div style={{ background: '#fff', border: '1px solid #ECE7F6', borderRadius: 10, padding: '10px 12px', width: 100 }}>

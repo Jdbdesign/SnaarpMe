@@ -49,6 +49,7 @@ function PricingCard({ name, price, priceSub, features, cta, popular, delay }: {
     <div
       data-reveal=""
       data-reveal-delay={delay}
+      data-hover-lift=""
       style={{
         background: dark ? '#17131F' : '#fff',
         border: `1px solid ${dark ? '#17131F' : '#ECE7F6'}`,
