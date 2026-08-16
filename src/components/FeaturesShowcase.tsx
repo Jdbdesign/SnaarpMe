@@ -133,119 +133,246 @@ export default function FeaturesShowcase() {
   return (
     <section ref={sectionRef} id="product" style={{ padding: '80px 26px', background: '#fff', fontFamily: "'Poppins',system-ui,sans-serif" }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-        {/* Section header */}
-        <div data-reveal="" style={{ maxWidth: 620, margin: '0 auto 48px', textAlign: 'center' }}>
-          <span style={{ fontSize: '12.5px', letterSpacing: '.14em', fontWeight: 700, color: T.purple }}>
-            EVERYTHING YOU NEED TO RUN MEETINGS
-          </span>
-          <h2 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(30px,3.4vw,42px)', lineHeight: 1.16, letterSpacing: '-.024em', fontWeight: 600, color: T.ink, margin: '14px 0 0' }}>
-            One product. Every part of the meeting,{' '}
-            <span style={{ color: T.purpleDark }}>handled.</span>
-          </h2>
-          <p style={{ fontSize: 17, lineHeight: 1.62, color: T.body, margin: '16px 0 0', maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
-            Booking, video, routing, and reminders &mdash; SnaarpMe isn&apos;t a scheduling link with extras bolted on. It&apos;s the whole meeting lifecycle, in one place.
-          </p>
+
+        {/* Smart Scheduling hero section */}
+        <div data-reveal="" style={{ marginBottom: 80 }}>
+          <img src="/assets/smart-scheduling-hero.svg" alt="Smart Scheduling — Book smarter, save more time" style={{ width: '100%', height: 'auto', display: 'block' }} />
         </div>
 
-        {/* Desktop card */}
-        <div
-          data-reveal=""
-          data-reveal-delay="90"
-          className="fs-card-desktop"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocus={() => setPaused(true)}
-          onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false); }}
-          style={{
-            background: '#fff',
-            border: `1px solid ${T.border}`,
-            borderRadius: 22,
-            boxShadow: '0 40px 80px -48px rgba(35,20,70,.20)',
-            display: 'grid',
-            gridTemplateColumns: '300px 1fr',
-            overflow: 'hidden',
-            height: MOCKUP_HEIGHT + 80,
-          }}
-        >
-          {/* Left column: feature list */}
-          <div style={{ padding: '32px 28px', borderRight: `1px solid ${T.border}`, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 24 }}>
-            {FEATURES.map((f, idx) => {
-              const isActive = idx === activeIdx;
-              return (
-                <button
-                  key={f.id}
-                  type="button"
-                  onClick={() => handleClick(idx)}
-                  style={{
-                    display: 'block',
-                    textAlign: 'left',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontFamily: 'inherit',
-                    padding: isActive ? '16px 18px' : '2px 0',
-                    background: isActive ? T.purpleTint : 'transparent',
-                    borderLeft: isActive ? `4px solid ${T.purple}` : '4px solid transparent',
-                    borderRadius: isActive ? 12 : 0,
-                    transition: 'all 200ms cubic-bezier(.22,.8,.3,1)',
-                    position: 'relative',
-                  }}
-                >
-                  <span style={{ display: 'block', fontSize: 16, fontWeight: 700, color: isActive ? T.purpleDark : T.ink, lineHeight: 1.3, transition: 'color 200ms ease' }}>
-                    {f.label}
-                  </span>
-                  <span style={{ display: 'block', fontSize: 13, color: T.body, marginTop: 4, lineHeight: 1.5 }}>
-                    {f.description}
-                  </span>
-                  {/* Progress bar */}
-                  {isActive && !reducedMotion && inView && (
-                    <span style={{ position: 'absolute', bottom: 4, left: 18, right: 18, height: 2, background: T.border, borderRadius: T.pillRadius, overflow: 'hidden' }}>
-                      <span style={{ display: 'block', height: '100%', width: `${progress * 100}%`, background: T.purple, borderRadius: T.pillRadius }} />
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+        {/* SnaarpMe Connect / Integration section */}
+        <div data-reveal="" style={{ marginBottom: 80, background: '#6D28D9', borderRadius: 24, padding: 'clamp(36px,4vw,56px)', display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 40, alignItems: 'center', overflow: 'hidden' }} className="fs-scheduling-grid">
+          {/* Left: copy */}
+          <div>
+            <span style={{ fontSize: '12px', letterSpacing: '.14em', fontWeight: 700, color: 'rgba(255,255,255,.7)', display: 'block', marginBottom: 14 }}>THE POWER OF INTEGRATION</span>
+            <h3 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(24px,2.8vw,34px)', lineHeight: 1.2, letterSpacing: '-.02em', fontWeight: 700, color: '#fff', margin: '0 0 16px' }}>
+              How SnaarpMe Product Work Together
+            </h3>
+            <p style={{ fontSize: 15, lineHeight: 1.65, color: 'rgba(255,255,255,.75)', margin: '0 0 28px', maxWidth: 340 }}>
+              Our suite of products is designed to work seamlessly together, creating a unified experience that amplifies your productivity.
+            </p>
+            <a href="#signup" data-hover-arrow="" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '14px 28px', borderRadius: 12, background: '#fff', color: T.purpleDark, fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1), box-shadow 200ms ease' }}>
+              Integrate Snaarp Products
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={T.purpleDark} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5.5l6.5 6.5-6.5 6.5" /></svg>
+            </a>
           </div>
+          {/* Right: SVG */}
+          <div>
+            <img src="/assets/snaarpme-connect.svg" alt="How SnaarpMe products integrate together" style={{ width: '100%', height: 'auto', display: 'block' }} />
+          </div>
+        </div>
 
-          {/* Right area: fixed-size mockup container with cross-fade */}
-          <div style={{ padding: '24px 28px', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', height: '100%', overflow: 'hidden' }}>
-            <div style={{ width: '100%', height: MOCKUP_HEIGHT, position: 'relative' }}>
-              <FadeMockup activeId={FEATURES[activeIdx].id} />
+        {/* Why Choose SnaarpMe section */}
+        <div data-reveal="" style={{ marginBottom: 80, background: '#F9F8FC', borderRadius: 24, padding: 'clamp(36px,4vw,56px)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 48, alignItems: 'start' }} className="fs-scheduling-grid">
+            {/* Left: copy */}
+            <div>
+              <span style={{ fontSize: '12px', letterSpacing: '.14em', fontWeight: 700, color: T.purple, display: 'block', marginBottom: 14 }}>WHY CHOOSE SNAARPME?</span>
+              <h3 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(24px,2.8vw,34px)', lineHeight: 1.2, letterSpacing: '-.02em', fontWeight: 700, color: T.ink, margin: '0 0 16px' }}>
+                Built for businesses that <span style={{ color: T.purple }}>demand more</span>
+              </h3>
+              <p style={{ fontSize: 15, lineHeight: 1.65, color: T.body, margin: '0 0 28px', maxWidth: 320 }}>
+                SnaarpMe isn&apos;t just another tool. It&apos;s your complete business operating system.
+              </p>
+              <a href="#signup" data-hover-arrow="" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '14px 28px', borderRadius: 12, background: T.purple, color: '#fff', fontSize: 15, fontWeight: 700, boxShadow: '0 12px 24px -12px rgba(109,40,217,.8)', textDecoration: 'none', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1), box-shadow 200ms ease' }}>
+                Get Started For Free
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5.5l6.5 6.5-6.5 6.5" /></svg>
+              </a>
+            </div>
+            {/* Right: 6 benefit cards in 3x2 grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+              {[
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>, title: 'Save 10+ Hours Weekly', desc: 'Automate scheduling and eliminate manual work' },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>, title: 'Increase Productivity', desc: 'All tools in one place, no more app switching' },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>, title: 'Reduce Costs', desc: 'One platform, one bill, unlimited possibilities' },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title: 'Enterprise Security', desc: 'Bank-level security to protect your data' },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>, title: 'Scalable Growth', desc: 'Grows with your business, from startup to enterprise' },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>, title: '24/7 Support', desc: 'Round-the-clock support when you need it' },
+              ].map(item => (
+                <div key={item.title} style={{ background: '#fff', borderRadius: 14, padding: '20px 18px', border: '1px solid #ECE7F6' }}>
+                  <span style={{ width: 36, height: 36, borderRadius: 10, background: '#F4F0FE', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
+                    {item.icon}
+                  </span>
+                  <span style={{ display: 'block', fontSize: 14, fontWeight: 700, color: T.ink, marginBottom: 4 }}>{item.title}</span>
+                  <span style={{ display: 'block', fontSize: 12, color: T.muted, lineHeight: 1.5 }}>{item.desc}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Product icons row */}
-        <div data-reveal="" data-reveal-delay="140" style={{ marginTop: 48, textAlign: 'center' }}>
-          <p style={{ fontSize: 15, color: T.ink, margin: '0 0 24px', fontWeight: 500 }}>
-            SnaarpMe works with any of <span style={{ fontWeight: 700 }}>Snaarp Products</span> and more...
+        {/* Section header */}
+        <div data-reveal="" style={{ maxWidth: 720, margin: '0 auto 56px', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(30px,3.4vw,42px)', lineHeight: 1.16, letterSpacing: '-.024em', fontWeight: 600, color: T.ink, margin: '0 0 18px' }}>
+            One product. <span style={{ color: T.purple }}>Infinite</span> Possibilities
+          </h2>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: T.body, margin: '0 auto', maxWidth: 580 }}>
+            Replace your fragmented toolstack. Customize your booking flow, integrate your favorite apps, and manage your entire team from a single platform
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
-            {[
-              { src: '/assets/favicons/SnaarpMe-Fav.svg', alt: 'SnaarpMe' },
-              { src: '/assets/favicons/SnaarpMeet-Fav.svg', alt: 'Snaarp Meet' },
-              { src: '/assets/favicons/SnaarpTeams-Fav.svg', alt: 'Snaarp Teams' },
-              { src: '/assets/favicons/Mail-Fav.svg', alt: 'Mail' },
-              { src: '/assets/favicons/Document-Fav.svg', alt: 'Document' },
-              { src: '/assets/favicons/Presentation-Fav.svg', alt: 'Presentation' },
-              { src: '/assets/favicons/Sheet-Fav.svg', alt: 'Sheet' },
-            ].map(icon => (
-              <img key={icon.alt} src={icon.src} alt={icon.alt} data-hover-icon="" style={{ width: 48, height: 48, objectFit: 'contain', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1)', cursor: 'pointer' }} />
-            ))}
+        </div>
+
+        {/* Smart Scheduling showcase */}
+        <div data-reveal="" data-reveal-delay="100" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 48, alignItems: 'center', marginBottom: 80 }} className="fs-scheduling-grid">
+          {/* Left: copy */}
+          <div>
+            <h3 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(24px,2.6vw,32px)', lineHeight: 1.2, letterSpacing: '-.02em', fontWeight: 700, color: T.ink, margin: '0 0 16px' }}>
+              Smart Scheduling Made<br /><span style={{ color: T.purple }}>Effortless</span>
+            </h3>
+            <p style={{ fontSize: 15, lineHeight: 1.65, color: T.body, margin: '0 0 24px', maxWidth: 360 }}>
+              Share availability, let other book time with you, and never worry about double booking again
+            </p>
+            <ul style={{ margin: '0 0 28px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                'Personalized booking links',
+                'Calender sync (Google, Outlook)',
+                'Automated time zone detection',
+                'Reminders & follow-ups',
+              ].map(item => (
+                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 15, color: T.ink }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M4.5 12.5l5 5 10-11" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#signup" data-hover-arrow="" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '14px 28px', borderRadius: 12, background: T.purple, color: '#fff', fontSize: 15, fontWeight: 700, boxShadow: '0 12px 24px -12px rgba(109,40,217,.8)', textDecoration: 'none', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1), box-shadow 200ms ease' }}>
+              Explore scheduling
+            </a>
+          </div>
+          {/* Right: SVG mockup */}
+          <div>
+            <img src="/assets/Scheduling.svg" alt="Smart scheduling interface showing booking flow, calendar sync, and time selection" style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
         </div>
 
-        {/* Mobile accordion */}
+        {/* Team Chat showcase */}
+        <div data-reveal="" data-reveal-delay="100" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 48, alignItems: 'center', marginBottom: 80 }} className="fs-scheduling-grid">
+          {/* Left: SVG mockup */}
+          <div>
+            <img src="/assets/Teams.svg" alt="Team chat interface showing real-time messaging, file sharing, and group conversations" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16 }} />
+          </div>
+          {/* Right: copy */}
+          <div>
+            <h3 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(24px,2.6vw,32px)', lineHeight: 1.2, letterSpacing: '-.02em', fontWeight: 700, color: T.ink, margin: '0 0 16px' }}>
+              Team Chat That Keeps<br />You Aligned
+            </h3>
+            <p style={{ fontSize: 15, lineHeight: 1.65, color: T.body, margin: '0 0 24px', maxWidth: 360 }}>
+              Real-time messaging, file sharing and smart search to keep your team in sync
+            </p>
+            <ul style={{ margin: '0 0 28px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                'Direct & group chats',
+                'File sharing',
+                'Message reactions',
+                'Powerful search',
+              ].map(item => (
+                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 15, color: T.ink }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M4.5 12.5l5 5 10-11" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#signup" data-hover-arrow="" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '14px 28px', borderRadius: 12, background: T.purple, color: '#fff', fontSize: 15, fontWeight: 700, boxShadow: '0 12px 24px -12px rgba(109,40,217,.8)', textDecoration: 'none', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1), box-shadow 200ms ease' }}>
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        {/* Unlimited Meetings showcase */}
+        <div data-reveal="" data-reveal-delay="100" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 48, alignItems: 'center', marginBottom: 80 }} className="fs-scheduling-grid">
+          {/* Left: copy */}
+          <div>
+            <h3 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(24px,2.6vw,32px)', lineHeight: 1.2, letterSpacing: '-.02em', fontWeight: 700, color: T.ink, margin: '0 0 16px' }}>
+              Unlimited Meetings
+            </h3>
+            <p style={{ fontSize: 15, lineHeight: 1.65, color: T.body, margin: '0 0 24px', maxWidth: 380 }}>
+              Host as many 1:1 or group meetings as you need. No limit, no interruptions
+            </p>
+            <ul style={{ margin: '0 0 28px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                'No meeting duration limits',
+                'Up to 50 participants',
+                'Breakout rooms',
+                'Meeting templates',
+              ].map(item => (
+                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 15, color: T.ink }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M4.5 12.5l5 5 10-11" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#signup" data-hover-arrow="" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '14px 28px', borderRadius: 12, background: T.purple, color: '#fff', fontSize: 15, fontWeight: 700, boxShadow: '0 12px 24px -12px rgba(109,40,217,.8)', textDecoration: 'none', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1), box-shadow 200ms ease' }}>
+              Get Started With SnaarpMe
+            </a>
+          </div>
+          {/* Right: SVG mockup */}
+          <div>
+            <img src="/assets/Unlimited-Meetings.svg" alt="Unlimited meetings interface showing calendar with active events and agenda view" style={{ width: '100%', height: 'auto', display: 'block' }} />
+          </div>
+        </div>
+
+        {/* High-Quality Video Calls showcase */}
+        <div data-reveal="" data-reveal-delay="100" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 48, alignItems: 'center', marginBottom: 80 }} className="fs-scheduling-grid">
+          {/* Left: SVG mockup */}
+          <div>
+            <img src="/assets/Snaarp-Meet.svg" alt="Snaarp Meet video call interface with screen sharing, participants, and call controls" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16 }} />
+          </div>
+          {/* Right: copy */}
+          <div>
+            <h3 style={{ fontFamily: "'Poppins',system-ui,sans-serif", fontSize: 'clamp(24px,2.6vw,32px)', lineHeight: 1.2, letterSpacing: '-.02em', fontWeight: 700, color: T.ink, margin: '0 0 16px' }}>
+              High-Quality Video Calls
+            </h3>
+            <p style={{ fontSize: 15, lineHeight: 1.65, color: T.body, margin: '0 0 24px', maxWidth: 380 }}>
+              Bring conversations to life with HD video, noise cancellation and seamless screen sharing
+            </p>
+            <ul style={{ margin: '0 0 28px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                'HD Video & Audio',
+                'Screen Sharing',
+                'Virtual Backgrounds',
+                'Record Meetings & Transcripts',
+              ].map(item => (
+                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 15, color: T.ink }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={T.purple} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M4.5 12.5l5 5 10-11" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#signup" data-hover-arrow="" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '14px 28px', borderRadius: 12, background: T.purple, color: '#fff', fontSize: 15, fontWeight: 700, boxShadow: '0 12px 24px -12px rgba(109,40,217,.8)', textDecoration: 'none', transition: 'transform 150ms cubic-bezier(.22,.8,.3,1), box-shadow 200ms ease' }}>
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        {/* === COMMENTED OUT: Interactive features showcase + product icons ===
+        <div data-reveal="" style={{ maxWidth: 620, margin: '0 auto 48px', textAlign: 'center' }}>
+          <span style={{ fontSize: '12.5px', letterSpacing: '.14em', fontWeight: 700, color: T.purple }}>
+            EVERYTHING YOU NEED TO RUN MEETINGS
+          </span>
+          <p style={{ fontSize: 17, lineHeight: 1.62, color: T.body, margin: '16px 0 0', maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
+            Booking, video, routing, and reminders &mdash; SnaarpMe isn&apos;t a scheduling link with extras bolted on. It&apos;s the whole meeting lifecycle, in one place.
+          </p>
+        </div>
+        === END COMMENTED OUT === */}
+
+        {/* === COMMENTED OUT: Desktop card ===
+        */}
+
+        {/* === COMMENTED OUT: Product icons row ===
+        */}
+
+        {/* Mobile accordion — commented out with desktop section
         <div className="fs-card-mobile" data-reveal="" data-reveal-delay="90">
           <MobileAccordion features={FEATURES} activeIdx={activeIdx} setActiveIdx={setActiveIdx} />
         </div>
+        */}
       </div>
 
       <style>{`
         .fs-card-mobile { display: none; }
+        .fs-scheduling-grid {}
         @media (max-width: 899px) {
           .fs-card-desktop { display: none !important; }
           .fs-card-mobile { display: block !important; }
+          .fs-scheduling-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
